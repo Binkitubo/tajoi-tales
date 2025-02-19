@@ -1,0 +1,157 @@
+.navbar {
+  margin: 0.5rem;
+  padding: 0.8rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; // Ensure the navbar is on top
+
+  &__language select {
+    /*     cursor: pointer;
+    background: none;
+    font-size: 1.4rem;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 0.5rem; */
+
+    appearance: none; // Remove default dropdown arrow
+    -webkit-appearance: none; // Safari support
+    -moz-appearance: none; // Firefox support
+    width: 100%;
+    padding: 12px 40px 12px 15px; // Add space for custom arrow
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: transparent;
+    border: none; // Customize border color
+    outline: none;
+    color: #fff; // Text color
+    cursor: pointer;
+    transition: all 0.3s ease; // Smooth transitions
+
+    &__language::after {
+      content: "▼";              // Unicode for down arrow
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      pointer-events: none;      // Let clicks pass through to the select
+      font-size: 12px;
+      color: #333;               // Arrow color
+    }
+  }
+
+  &__container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; // Relative position to keep the toggle button layered correctly
+    z-index: 1100; // Higher z-index for toggle button and navbar content
+  }
+
+  &__toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    transition: all 0.3s ease;
+    z-index: 1200; // Make sure the button stays on top of everything
+
+    &.open .navbar__toggle-icon {
+      background: transparent;
+    }
+
+    &.open .navbar__toggle-icon::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    &.open .navbar__toggle-icon::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    .navbar__toggle-icon {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      &::before {
+        top: -8px;
+      }
+
+      &::after {
+        top: 8px;
+      }
+    }
+  }
+
+  &__links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: left 0.3s ease;
+    z-index: 900; // Lower than the navbar to keep it underneath
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 2rem;
+      padding: 1rem 2.8rem;
+
+      &:hover {
+        color: #d3d3d3;
+      }
+    }
+  }
+
+  &__links--open {
+    left: 0; // Slide in when menu is open
+  }
+}
+
+/* Apply blur effect to main content when menu is open */
+body.menu-open .main-content {
+  filter: blur(8px);
+  transition: filter 0.3s ease;
+  pointer-events: none; // Prevent interaction with blurred content
+}
+
+/* Hide hero content (h1 and p) when menu is open */
+body.menu-open .hero__content h1,
+body.menu-open .hero__content p {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show hero content when menu is closed */
+.fade-text {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}

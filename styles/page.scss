@@ -1,0 +1,71 @@
+.color_palette {
+  color: #d6d46d; //highlights, buttons, or accent borders
+  color: #f4dfb6; //background color for sections or cards
+  color: #de8f5f; //call-to-action buttons like "Reserve" or hover effects
+  color: #9a4444; //headings, the logo, or important elements like the navbar or footer
+}
+
+.hero {
+  position: relative;
+  height: 100vh; // Full screen height
+  overflow: hidden;
+  box-shadow: inset 0 0 100px 20px rgba(0, 0, 0, 0.5);
+
+  &__video {
+    position: absolute;
+    opacity: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Ensure the video covers the entire section
+    z-index: -1; // Push the video behind the text
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 1rem;
+
+    h1 {
+      font-family: "Mea Culpa";
+      font-size: 8rem;
+      font-weight: normal;
+      margin-bottom: 0.5rem;
+      letter-spacing: 2px;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
+    }
+
+    p {
+      position: relative;
+      left: 4.7rem;
+      bottom: 1.2rem;
+      font-family: "Poiret one";
+      font-size: 1.5rem;
+      font-weight: normal;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero__content {
+    h1 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+}
